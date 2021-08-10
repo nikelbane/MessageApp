@@ -1,3 +1,4 @@
+# MessageApp
 Android Messaging app using Firebase
 
 Basic messaging app using Google Firebase as a backend for text communication.
