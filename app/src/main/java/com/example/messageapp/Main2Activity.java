@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -87,7 +88,6 @@ public class Main2Activity extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
         viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-        viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
 
         viewPager.setAdapter(viewPagerAdapter);
 
@@ -104,9 +104,14 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logout: FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(Main2Activity.this,MainActivity.class));
-            finish();
+            case R.id.profileMenu:
+                Intent intent = new Intent(Main2Activity.this,ProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(Main2Activity.this,MainActivity.class));
+                finish();
             return true;
         }
 
